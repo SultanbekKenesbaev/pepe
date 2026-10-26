@@ -1,0 +1,83 @@
+# Apply with compose.production.yaml and the existing compose.authoring.yaml.
+# This service has its own queue, token, jobs, labels and worker images.
+services:
+  author-broker-2d:
+    build:
+      context: ${AI_TEACHER_RELEASE:?Set AI_TEACHER_RELEASE}/worker
+      dockerfile: Dockerfile.broker
+    image: routemotion-author-broker-2d:${AI_TEACHER_2D_VERSION:?Set AI_TEACHER_2D_VERSION}
+    container_name: routemotion-author-broker-2d
+    user: "1000:1000"
+    group_add: ["${AI_TEACHER_DOCKER_GID:-0}"]
+    init: true
+    environment:
+      HOST: 0.0.0.0
+      PORT: "8080"
+      WORKER_VIDEO_MODE: 2d
+      WORKER_JOBS: /jobs
+      WORKER_HOST_JOBS: ${AI_TEACHER_2D_AUTHOR_JOBS:-/opt/ai-teacher/author-2d-jobs}
+      WORKER_HOST_CODEX_AUTH: ${AI_TEACHER_CODEX_AUTH:-/opt/ai-teacher/codex-auth}
+      WORKER_TOKEN_FILE: /run/secrets/author-2d-worker.token
+      WORKER_AUTHOR_IMAGE: routemotion-lesson-author-2d:${AI_TEACHER_2D_AUTHOR_VERSION:-${AI_TEACHER_2D_VERSION:?Set AI_TEACHER_2D_VERSION}}
+      WORKER_RENDER_IMAGE: routemotion-lesson-render-2d:${AI_TEACHER_2D_RENDER_VERSION:-${AI_TEACHER_2D_VERSION:?Set AI_TEACHER_2D_VERSION}}
+      WORKER_SECCOMP_PROFILE: /run/security/worker-seccomp.json
+      WORKER_APPARMOR_PROFILE: routemotion-lesson-author
+      WORKER_RENDER_CPUS: "${WORKER_2D_RENDER_CPUS:-4}"
+      CODEX_MODEL: gpt-6-astra
+      CODEX_REASONING_EFFORT: ultra
+    volumes:
+      - type: bind
+        source: /opt/ai-teacher/worker-seccomp.json
+        target: /run/security/worker-seccomp.json
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+        bind: {create_host_path: false}
+      - type: bind
+        source: ${AI_TEACHER_2D_AUTHOR_JOBS:-/opt/ai-teacher/author-2d-jobs}
+        target: /jobs
+        bind: {create_host_path: false}
+      - type: bind
+        source: ${AI_TEACHER_2D_WORKER_TOKEN:-/opt/ai-teacher/secrets/author-2d-worker.token}
+        target: /run/secrets/author-2d-worker.token
+        read_only: true
+        bind: {create_host_path: false}
+    networks: [author_control]
+    read_only: true
+    tmpfs: ["/tmp:rw,nosuid,nodev,size=128m,mode=1777"]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 512m
+    cpus: 0.5
+    pids_limit: 128
+    restart: unless-stopped
+    stop_grace_period: 90s
+    logging:
+      driver: json-file
+      options: {max-size: 10m, max-file: "3"}
+
+  author-2d-image:
+    profiles: [build-images]
+    build:
+      context: ${AI_TEACHER_RELEASE:?Set AI_TEACHER_RELEASE}/worker
+      dockerfile: Dockerfile.author2d
+    image: routemotion-lesson-author-2d:${AI_TEACHER_2D_AUTHOR_VERSION:-${AI_TEACHER_2D_VERSION:?Set AI_TEACHER_2D_VERSION}}
+    network_mode: none
+    command: [node, --version]
+    restart: "no"
+
+  render-2d-image:
+    profiles: [build-images]
+    build:
+      context: ${AI_TEACHER_RELEASE:?Set AI_TEACHER_RELEASE}/worker
+      dockerfile: Dockerfile.render2d
+    image: routemotion-lesson-render-2d:${AI_TEACHER_2D_RENDER_VERSION:-${AI_TEACHER_2D_VERSION:?Set AI_TEACHER_2D_VERSION}}
+    network_mode: none
+    command: [node, --version]
+    restart: "no"
+
+networks:
+  author_control:
+    internal: true

@@ -1,0 +1,24 @@
+{
+  "repository": "https://github.com/moby/profiles",
+  "commit": "4b8214fc4971e06172938a1f1554ccff6647ee80",
+  "seccomp": "seccomp/default.json",
+  "apparmor": "apparmor/template.go",
+  "license": "Apache-2.0",
+  "authorOnlyAddedSyscalls": [
+    "clone",
+    "unshare",
+    "setns",
+    "mount",
+    "umount",
+    "umount2",
+    "pivot_root",
+    "chroot"
+  ],
+  "apparmorDelta": [
+    "profile routemotion-lesson-author",
+    "deny mount replaced with mount",
+    "userns allow",
+    "pivot_root allow for bubblewrap private root"
+  ],
+  "renderer": "Docker default seccomp/AppArmor unchanged"
+}

@@ -1,0 +1,109 @@
+{
+  "verifiedAt": "2026-10-23T15:18:16.003317+00:00",
+  "mode": "Licensed instrumental source edit; no music synthesized, no paid calls or new models/accounts.",
+  "assets": [
+    {
+      "title": "Borealis",
+      "creator": "Scott Buckley",
+      "sourcePage": "https://www.scottbuckley.com.au/library/borealis/",
+      "officialDownload": "https://www.scottbuckley.com.au/library/wp-content/uploads/2019/09/sb_borealis.mp3",
+      "sourceFile": "/Users/sultanbekkenesbaev/Documents/Codex/2026-10-20/x20-3/work/arrays-2d/media/music/sb_borealis-original.mp3",
+      "sha256": "1057bd271315aaf4267b9c09ef18ac7609a6f701b6d2bff07f40d029adaa85ea",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "391.764059",
+          "size": "15674696"
+        }
+      },
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "usageInfo": "https://www.scottbuckley.com.au/library/using-this-music/",
+      "sourceRangeSeconds": [
+        0,
+        390
+      ],
+      "filmRangeSeconds": [
+        0,
+        390
+      ]
+    },
+    {
+      "title": "Reverie",
+      "creator": "Scott Buckley",
+      "sourcePage": "https://www.scottbuckley.com.au/library/reverie/",
+      "officialDownload": "https://www.scottbuckley.com.au/library/wp-content/uploads/2020/03/sb_reverie.mp3",
+      "sourceFile": "/Users/sultanbekkenesbaev/Documents/Codex/2026-10-20/x20-3/work/arrays-2d/media/music/sb_reverie-original.mp3",
+      "sha256": "ca1e7194d7d6f49127c77ff2f4011d07182525c826bb7ded3d3944e69ca678d2",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "223.672925",
+          "size": "8950768"
+        }
+      },
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "usageInfo": "https://www.scottbuckley.com.au/library/using-this-music/",
+      "sourceRangeSeconds": [
+        0,
+        222
+      ],
+      "filmRangeSeconds": [
+        378,
+        600
+      ]
+    }
+  ],
+  "edit": {
+    "durationSeconds": 600,
+    "crossfadeSeconds": 12,
+    "crossfadeFilmRangeSeconds": [
+      378,
+      390
+    ],
+    "crossfadeCurve": "quarter-sine equal-power",
+    "fadeInSeconds": 4,
+    "fadeOutSeconds": 8,
+    "sourceSpeed": 1,
+    "noPitchChange": true,
+    "mixTarget": "quiet underscore under Puck voice",
+    "integratedLufs": -34.03,
+    "truePeakDbtp": -19.75,
+    "loudnessRangeLu": 7.4,
+    "recommendedCompositionGain": 1,
+    "note": "Music is already attenuated to about -34LUFS. Keep clip gain1 initially; final narration/carve/ducking decisions remain with film mixer."
+  },
+  "outputs": [
+    {
+      "file": "/Users/sultanbekkenesbaev/Documents/Codex/2026-10-20/x20-3/work/arrays-2d/media/music/music-bed.wav",
+      "bytes": 115200078,
+      "sha256": "7c00f75988eaa2df720a2f4e61f91ea301f2b652bad40752b17852569e057a38"
+    },
+    {
+      "file": "/Users/sultanbekkenesbaev/Documents/Codex/2026-10-20/x20-3/work/arrays-2d/media/music/music-bed.mp3",
+      "bytes": 14401196,
+      "sha256": "594e6f936c7ce69de4121ea1ef650f3c9dc366e52745edcf1be0defa791fc69a"
+    }
+  ],
+  "credit": "Borealis and Reverie by Scott Buckley — released under CC BY 4.0. https://www.scottbuckley.com.au | https://creativecommons.org/licenses/by/4.0/",
+  "changesNotice": "Trimmed, crossfaded, faded and attenuated for a600-second educational film.",
+  "publishingNote": "Include music credits with the delivered film; for YouTube include attribution in the video description. Do not register this source music or edit with a music fingerprinting service.",
+  "filmAsset": "/Users/sultanbekkenesbaev/Documents/Codex/2026-10-20/x20-3/work/arrays-2d/film/assets/music-bed.mp3"
+}

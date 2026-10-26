@@ -1,0 +1,123 @@
+:root {
+  --uni-bg:#f3f6fa;
+  --uni-panel:#ffffff;
+  --uni-panel-raised:#edf2f7;
+  --uni-ink:#1c2833;
+  --uni-muted:#6b7885;
+  --uni-line:#dce4ec;
+  --uni-accent:#d1ff52;
+  --uni-accent-ink:#182107;
+  --uni-paper:#f0f5fb;
+}
+.uni-app,.uni-login,.uni-loader,.uni-error {
+  --primary:var(--uni-accent);--primary-dark:#bde83c;--ink:var(--uni-ink);
+  --muted:var(--uni-muted);--line:var(--uni-line);--surface:var(--uni-panel);
+  --bg:var(--uni-bg);--green:#426c24;--danger:#bc4435;--radius:24px;
+  color:var(--uni-ink);background:var(--uni-bg);color-scheme:light;
+}
+.uni-app {min-height:100vh;background-image:radial-gradient(ellipse at 85% -10%,#dceafa80,transparent 50%)}
+.uni-header {height:104px;max-width:1536px;margin:auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.uni-logo {display:inline-flex;align-items:center;gap:12px;color:var(--uni-ink)}
+.uni-logo-mark {display:grid;place-items:center;width:43px;height:43px;background:#eaf2fb;border:1px solid #d4e1f0;border-radius:15px;color:var(--uni-ink);box-shadow:0 3px 10px #17201c08}
+.uni-logo-mark svg {width:31px;height:31px}
+.uni-logo>strong {font-size:25px;letter-spacing:-1.35px;font-weight:720}
+.uni-logo>strong>span {font-weight:430}
+.uni-logo i {font-style:normal;font-size:9px;vertical-align:top;display:inline-block;margin:5px 0 0 4px;letter-spacing:0;color:var(--uni-muted)}
+.uni-brand-button {border:0;background:transparent;padding:0;text-align:left;flex-shrink:0}
+.uni-header-right {display:flex;align-items:center;gap:17px;min-width:0}
+.uni-role-tag {font-size:11px;color:var(--uni-muted)}
+.uni-profile {display:flex;align-items:center;gap:10px;padding:6px 14px 6px 6px;border:1px solid var(--uni-line);background:var(--uni-panel);border-radius:999px;font-size:12px;color:var(--uni-ink);max-width:340px;min-width:0;transition:border-color .18s,background .18s}
+.uni-profile:hover {background:var(--uni-panel-raised);border-color:#b9c3bc}
+.uni-profile>span:not(.uni-profile-avatar) {overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.uni-profile>svg {margin-left:7px;color:var(--uni-muted);flex-shrink:0}
+.uni-profile-avatar {width:32px;height:32px;flex-shrink:0;border-radius:50%;background:var(--uni-accent);display:grid;place-items:center;color:var(--uni-accent-ink);font-size:11px;font-weight:750}
+.uni-logout {width:39px;height:39px;flex-shrink:0;display:grid;place-items:center;border:1px solid transparent;border-radius:50%;background:transparent;color:var(--uni-muted)}
+.uni-logout:hover {color:var(--uni-ink);background:var(--uni-panel);border-color:var(--uni-line)}
+.uni-main {max-width:1536px;margin:auto;padding:8px 40px 48px}
+.uni-app .eyebrow {letter-spacing:1.5px;font-size:10px;color:var(--uni-muted)}
+.uni-app :where(h1) {font-size:30px;font-weight:650}
+.uni-app .card {border:1px solid var(--uni-line);background:var(--uni-panel);border-radius:24px;box-shadow:none}
+.uni-app .button,.uni-app .btn,.uni-login .button {border-radius:999px;min-height:43px;font-size:12px;font-weight:650;background:var(--uni-panel-raised);border:1px solid var(--uni-line);color:var(--uni-ink);padding:11px 20px;box-shadow:none}
+.uni-app .button.primary,.uni-app .btn.primary,.uni-login .button.primary {background:var(--uni-accent);border-color:var(--uni-accent);box-shadow:none;color:var(--uni-accent-ink)}
+.uni-app .button.primary:hover,.uni-app .btn.primary:hover,.uni-login .button.primary:hover {background:#e0ff85;border-color:#e0ff85}
+.uni-app .button.secondary,.uni-app .btn.secondary {background:transparent;border-color:#d6ddd8;color:var(--uni-ink)}
+.uni-app .button.secondary:hover,.uni-app .btn.secondary:hover {background:var(--uni-panel-raised)}
+.uni-app .button.danger,.uni-app .btn.danger {color:#b23b2c;background:#fff3ef;border-color:#f1d2c9}
+.uni-app .icon-button {border-radius:50%;color:var(--uni-muted)}
+.uni-app .icon-button:hover {background:var(--uni-panel-raised);color:var(--uni-ink)}
+.uni-app .modal {background:var(--uni-panel);box-shadow:0 30px 100px #17201c26;border:1px solid var(--uni-line);border-radius:26px}
+.uni-app .modal-overlay {background:#26322d36;backdrop-filter:blur(9px)}
+.uni-app .account-page :is(input,select,textarea):not([type=range]):not([type=checkbox]):not([type=radio]),.uni-login input {
+  background:#fff;border-color:#d8dfda;border-radius:14px;font-size:13px;color:var(--uni-ink);min-height:43px;box-shadow:none;
+}
+.uni-app .account-page :is(input,select,textarea):not([type=range]):focus,.uni-login input:focus {border-color:#789a40;box-shadow:0 0 0 3px #d1ff5224}
+.uni-app .account-page :is(input,textarea)::placeholder,.uni-login input::placeholder {color:#858e88}
+.uni-app input[type=checkbox],.uni-app input[type=radio] {accent-color:var(--uni-accent)}
+.uni-app .field {font-size:12px;color:var(--uni-muted)}
+.uni-app .field-hint {color:var(--uni-muted)}
+.uni-app .badge {border-radius:999px;background:#f1f4f2;color:#58655c}
+.uni-app .badge.purple,.uni-app .badge.green {background:#f1f6e9;color:#466829}
+.uni-app .badge.red {background:#fff0eb;color:#ab4435}
+.uni-app table {font-size:12px}
+.uni-app :where(th) {font-size:10px;background:transparent;color:var(--uni-muted);padding-block:12px;border-color:var(--uni-line)}
+.uni-app :where(td) {padding-block:14px;border-color:var(--uni-line)}
+.uni-app .account-page {max-width:1100px;margin:24px auto}
+.uni-app .account-page>.page-header .eyebrow,.uni-app .account-page>.page-header p,.uni-app .profile-summary-note {display:none}
+.uni-app .account-page .account-grid {gap:24px}
+.uni-app .account-page h1 {font-size:26px}
+.uni-app .account-page h2 {color:var(--uni-ink)}
+.uni-app .account-page .section-title {color:var(--uni-ink)}
+.uni-app .account-page .section-title>svg,.uni-app .text-button {color:#52792b}
+.uni-app .account-page .profile-summary hr {display:none}
+.uni-app .account-page .account-avatar {background:#f1f4f2;color:#34463a;border-radius:50%}
+.uni-app .account-page .copy-field {background:var(--uni-panel-raised);border-color:var(--uni-line);border-radius:15px}
+.uni-app .table-wrap {position:relative}
+.uni-app .form-grid {gap:0 16px}
+.uni-app :focus-visible,.uni-login :focus-visible,.uni-loader :focus-visible {outline:2px solid #64852a;outline-offset:4px}
+.uni-error,.uni-loader {min-height:70vh;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:25px}
+.uni-loader {min-height:100vh}
+.uni-loader p {color:var(--uni-muted);font-size:13px}
+.uni-loader .loader {border-color:var(--uni-line);border-top-color:var(--uni-accent)}
+.uni-login {min-height:100vh;display:grid;grid-template-columns:1fr 1fr}
+.uni-login-art {position:relative;background:#eaf2fb;overflow:hidden;min-height:700px;padding:45px 54px;color:var(--uni-ink);display:flex;flex-direction:column;border-right:1px solid var(--uni-line)}
+.uni-login-art>.uni-logo {position:relative;z-index:2}
+.uni-login-art:after {position:absolute;content:'';inset:0;background-image:linear-gradient(#23342a08 1px,transparent 1px),linear-gradient(90deg,#23342a08 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(transparent,#000);pointer-events:none}
+.uni-login-sculpture {position:relative;flex:1;min-height:440px;isolation:isolate}
+.uni-sculpture-sphere {width:240px;height:240px;border-radius:50%;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:radial-gradient(circle at 30% 22%,#fff,#e8ecea 27%,#b2beb7 56%,#667a6d 83%);box-shadow:inset -28px -28px 45px #3c524522,inset 12px 12px 27px #ffffffaa,0 50px 70px #243d2520}
+.uni-sculpture-sphere:after {content:'';position:absolute;inset:15%;border-radius:50%;border-top:1px solid #fff5;transform:rotate(-35deg)}
+.uni-sculpture-ring {width:420px;height:150px;border:28px solid #dce3de;border-radius:50%;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-32deg);box-shadow:0 9px 0 #abb9af,inset 0 6px 0 #fff,0 20px 40px #243d2520;z-index:2}
+.uni-sculpture-ring.ring-b {width:350px;height:350px;border:1px solid #b6c3ba;box-shadow:none;transform:translate(-50%,-50%) rotate(-32deg);z-index:-1}
+.uni-sculpture-number {position:absolute;left:calc(50% - 30px);top:calc(50% - 65px);font-size:90px;color:#334c3fcc;font-family:Georgia,serif;transform:rotate(8deg);text-shadow:0 2px 0 #ffffff88}
+.uni-sculpture-chip {position:absolute;left:10%;top:24%;padding:16px 22px;border-radius:22px;transform:rotate(-12deg);background:linear-gradient(135deg,#ffffffdd,#f1f4f2aa);border:1px solid #d8e0da;backdrop-filter:blur(12px);font-family:Georgia,serif;font-size:29px;color:#3e5547;box-shadow:0 16px 30px #243d2512}
+.uni-sculpture-dot {width:35px;height:35px;border-radius:50%;position:absolute;right:12%;bottom:24%;background:radial-gradient(circle at 30% 25%,#fff,#b2beb0 45%,#303d31);box-shadow:0 10px 22px #0005}
+.uni-login-caption {position:relative;z-index:2;margin-top:auto}
+.uni-login-caption>span {font-size:10px;letter-spacing:2.8px;color:var(--uni-muted)}
+.uni-login-caption>strong {font-size:43px;font-weight:550;letter-spacing:-1.5px;line-height:1.15;display:block;margin-top:18px}
+.uni-login-caption>strong>span {font-size:50px;margin-left:35px;color:#466b2c}
+.uni-art-index {position:absolute;bottom:46px;right:45px;font-size:11px;color:var(--uni-muted)}
+.uni-login-panel {display:flex;align-items:center;justify-content:center;position:relative;padding:55px}
+.uni-login-form {width:360px;max-width:100%}
+.uni-login-switch {display:flex;gap:4px;background:var(--uni-panel);border:1px solid var(--uni-line);border-radius:999px;padding:5px;margin-bottom:38px}
+.uni-login-switch button {flex:1;border:0;background:transparent;padding:12px 9px;font-size:12px;color:var(--uni-muted);border-radius:999px}
+.uni-login-switch button.selected {background:var(--uni-accent);color:var(--uni-accent-ink);font-weight:650}
+.uni-login-form h1 {font-size:40px;font-weight:600;letter-spacing:-1.3px;margin:0 0 29px;color:var(--uni-ink)}
+.uni-login-form .field {font-size:12px;color:var(--uni-muted);margin-bottom:21px}
+.uni-login-form input {height:49px;font-size:14px}
+.uni-login-submit {width:100%;justify-content:space-between!important;min-height:49px!important;margin-top:7px}
+.uni-mfa-link {background:none;border:0;display:flex;align-items:center;gap:6px;padding:0;font-size:12px;color:var(--uni-muted);margin:0 0 18px}
+.uni-demo {display:flex;align-items:center;gap:15px;margin-top:28px;border-top:1px solid var(--uni-line);padding-top:22px;font-size:11px;color:var(--uni-muted)}
+.uni-demo>span {margin-right:auto}
+.uni-demo>button {font-size:11px;background:none;border:0;padding:5px 0;color:#45574b}
+.uni-demo>button:hover {color:#466b2c}
+.uni-login-year {position:absolute;bottom:32px;color:var(--uni-muted);font-size:10px;letter-spacing:.5px}
+.uni-login-mini-brand {display:none}
+.uni-login .error-message,.uni-app .error-message {background:#fff1eb;border-color:#edc6b7;color:#a0442f;border-radius:16px}
+.toast-stack .toast {background:#fff;border:1px solid #dce4dd;color:#24392a;border-radius:18px;box-shadow:0 14px 44px #2034281a}
+.toast-stack .toast>span {color:#4b7028}
+.toast-stack .toast.error {border-color:#edb5a3}
+.toast-stack .toast.error>span {color:#b14932}
+.toast-stack .toast button {color:#748077}
+@media(min-width:1700px){.uni-header{padding-inline:56px}.uni-main{padding-inline:56px}}
+@media(max-width:1100px){.uni-header{padding-inline:28px;height:90px}.uni-main{padding-inline:28px}.uni-login-art{padding:35px}.uni-sculpture-sphere{width:200px;height:200px}.uni-sculpture-ring{width:330px;height:130px;border-width:23px}.uni-login-caption>strong{font-size:35px}.uni-login-panel{padding:40px}.uni-sculpture-chip{left:2%;font-size:23px}}
+@media(max-width:800px){.uni-header{height:82px;padding-inline:22px}.uni-main{padding:8px 22px 28px}.uni-role-tag{display:none}.uni-header-right{gap:10px}.uni-profile>span:not(.uni-profile-avatar){display:none}.uni-profile>svg{margin:0 2px}.uni-profile{padding:5px 8px 5px 5px;gap:5px}.uni-logo>strong{font-size:23px}.uni-logo-mark{height:39px;width:39px;border-radius:13px}.uni-login{grid-template-columns:1fr}.uni-login-art{display:none}.uni-login-panel{min-height:100vh;padding:90px 28px}.uni-login-mini-brand{display:block;position:absolute;top:30px;left:28px}.uni-login-form{max-width:360px;width:100%}.uni-login-form h1{font-size:34px}.uni-login-year{bottom:25px}}
+@media(max-width:480px){.uni-header{padding-inline:16px;height:76px}.uni-main{padding-inline:16px}.uni-profile-avatar{width:28px;height:28px}.uni-logo-mark{width:36px;height:36px}.uni-logo>strong{font-size:21px}.uni-header-right{gap:7px}.uni-app .button,.uni-app .btn{font-size:12px;min-height:41px}.uni-app .account-page .account-grid{grid-template-columns:1fr}.uni-app .account-page .profile-summary{display:none}.uni-app .account-page .form-grid{grid-template-columns:1fr}.uni-demo{gap:12px;font-size:10px}.uni-demo>button{font-size:10px}}

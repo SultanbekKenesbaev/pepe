@@ -1,0 +1,690 @@
+{
+  "duration": 640.0642083333332,
+  "voice": {
+    "status": "ready",
+    "model": "gemini-2.5-pro-preview-tts",
+    "voice": "Puck"
+  },
+  "chapters": [
+    {
+      "id": "the-moment",
+      "scene": "intro",
+      "start": 0,
+      "duration": 58.08345833333333,
+      "title": "Прямо сейчас",
+      "formula": "80 км/ч",
+      "cues": [
+        {
+          "at": 0,
+          "text": "ПРЯМО СЕЙЧАС"
+        },
+        {
+          "at": 11.616691666666666,
+          "text": "СТОП-КАДР"
+        },
+        {
+          "at": 23.233383333333332,
+          "text": "КОФЕ ОСТЫВАЕТ"
+        },
+        {
+          "at": 34.850075,
+          "text": "ВВЕРХ. СТОП. ВНИЗ."
+        },
+        {
+          "at": 46.466766666666665,
+          "text": "ПРОИЗВОДНАЯ"
+        }
+      ],
+      "beats": [
+        {
+          "at": 0,
+          "kicker": "СКОРОСТЬ",
+          "headline": "ПРЯМО СЕЙЧАС",
+          "formula": "80 км/ч",
+          "emphasis": "hero"
+        },
+        {
+          "at": 12.6,
+          "kicker": "СТОП-КАДР",
+          "headline": "СТОП-КАДР",
+          "formula": "v = ?",
+          "emphasis": "number"
+        },
+        {
+          "at": 23.236,
+          "kicker": "УТРО",
+          "headline": "КОФЕ ОСТЫВАЕТ",
+          "formula": "T′ < 0",
+          "emphasis": "hero"
+        },
+        {
+          "at": 32.636,
+          "kicker": "БРОСОК",
+          "headline": "ВВЕРХ. СТОП. ВНИЗ.",
+          "formula": "H′ = 0",
+          "emphasis": "hero"
+        },
+        {
+          "at": 44.4,
+          "kicker": "ОДНА ИДЕЯ",
+          "headline": "ПРОИЗВОДНАЯ",
+          "formula": "Скорость изменения",
+          "emphasis": "hero"
+        }
+      ],
+      "caption": "ПРЯМО СЕЙЧАС"
+    },
+    {
+      "id": "moving-light",
+      "scene": "motion",
+      "start": 58.08345833333333,
+      "duration": 57.39908333333333,
+      "title": "Разгон",
+      "formula": "s(t) = t²",
+      "cues": [
+        {
+          "at": 0,
+          "text": "РАЗГОН"
+        },
+        {
+          "at": 11.479816666666666,
+          "text": "ОДНА СЕКУНДА"
+        },
+        {
+          "at": 22.959633333333333,
+          "text": "1 → 4 → 9"
+        },
+        {
+          "at": 34.439449999999994,
+          "text": "ВРЕМЯ → ГРАФИК"
+        },
+        {
+          "at": 45.919266666666665,
+          "text": "НАКЛОН = СКОРОСТЬ"
+        }
+      ],
+      "beats": [
+        {
+          "at": 0,
+          "kicker": "МОДЕЛЬ",
+          "headline": "РАЗГОН",
+          "formula": "s(t) = t²",
+          "emphasis": "hero"
+        },
+        {
+          "at": 10.318,
+          "kicker": "ПЕРВАЯ ОТМЕТКА",
+          "headline": "ОДНА СЕКУНДА",
+          "formula": "1² = 1 м",
+          "emphasis": "number"
+        },
+        {
+          "at": 20.618,
+          "kicker": "ЕЩЁ ДВА КАДРА",
+          "headline": "1 → 4 → 9",
+          "formula": "2² = 4 м → 3² = 9 м",
+          "emphasis": "number"
+        },
+        {
+          "at": 32.145,
+          "kicker": "СМЕНА РАКУРСА",
+          "headline": "ВРЕМЯ → ГРАФИК",
+          "formula": "t → · s ↑",
+          "emphasis": "hero"
+        },
+        {
+          "at": 43.382,
+          "kicker": "ДВЕ КАРТИНЫ",
+          "headline": "НАКЛОН = СКОРОСТЬ",
+          "formula": "s(t) = t²",
+          "emphasis": "hero"
+        }
+      ],
+      "caption": "РАЗГОН"
+    },
+    {
+      "id": "two-moments",
+      "scene": "average",
+      "start": 115.48254166666666,
+      "duration": 62.118208333333335,
+      "title": "Средняя скорость",
+      "formula": "t: 1 → 3 с",
+      "cues": [
+        {
+          "at": 0,
+          "text": "ДВА МОМЕНТА"
+        },
+        {
+          "at": 12.423641666666667,
+          "text": "8 МЕТРОВ. 2 СЕКУНДЫ."
+        },
+        {
+          "at": 24.847283333333333,
+          "text": "4 МЕТРА В СЕКУНДУ"
+        },
+        {
+          "at": 37.270925000000005,
+          "text": "СЕКУЩАЯ"
+        },
+        {
+          "at": 49.69456666666667,
+          "text": "А ПРЯМО СЕЙЧАС?"
+        }
+      ],
+      "beats": [
+        {
+          "at": 0,
+          "kicker": "ИНТЕРВАЛ",
+          "headline": "ДВА МОМЕНТА",
+          "formula": "t: 1 → 3 с",
+          "emphasis": "hero"
+        },
+        {
+          "at": 10.591,
+          "kicker": "ИЗМЕНЕНИЯ",
+          "headline": "8 МЕТРОВ. 2 СЕКУНДЫ.",
+          "formula": "Δs = 8 м · Δt = 2 с",
+          "emphasis": "number"
+        },
+        {
+          "at": 23.136,
+          "kicker": "СРЕДНЯЯ СКОРОСТЬ",
+          "headline": "4 МЕТРА В СЕКУНДУ",
+          "formula": "vср = 8 / 2 = 4 м/с",
+          "emphasis": "number"
+        },
+        {
+          "at": 33.364,
+          "kicker": "СЕКУЩАЯ",
+          "headline": "СЕКУЩАЯ",
+          "formula": "Наклон = Δs / Δt",
+          "emphasis": "hero"
+        },
+        {
+          "at": 47.5,
+          "kicker": "КОНКРЕТНЫЙ МОМЕНТ",
+          "headline": "А ПРЯМО СЕЙЧАС?",
+          "formula": "v(2) = ?",
+          "emphasis": "hero"
+        }
+      ],
+      "caption": "ДВА МОМЕНТА"
+    },
+    {
+      "id": "closer",
+      "scene": "secant",
+      "start": 177.60075,
+      "duration": 69.60025,
+      "title": "Приближаем время",
+      "formula": "A = (2; 4)",
+      "cues": [
+        {
+          "at": 0,
+          "text": "ФИКСИРУЕМ МОМЕНТ"
+        },
+        {
+          "at": 13.92005,
+          "text": "ОДНА СЕКУНДА"
+        },
+        {
+          "at": 27.8401,
+          "text": "ДЕСЯТАЯ СЕКУНДЫ"
+        },
+        {
+          "at": 41.760149999999996,
+          "text": "СОТАЯ СЕКУНДЫ"
+        },
+        {
+          "at": 55.6802,
+          "text": "ОДНА ФОРМУЛА"
+        }
+      ],
+      "beats": [
+        {
+          "at": 0,
+          "kicker": "ТОЧКА A",
+          "headline": "ФИКСИРУЕМ МОМЕНТ",
+          "formula": "A = (2; 4)",
+          "emphasis": "number"
+        },
+        {
+          "at": 12.655,
+          "kicker": "ПЕРВАЯ ПОПЫТКА",
+          "headline": "ОДНА СЕКУНДА",
+          "formula": "h = 1 → vср = 5 м/с",
+          "emphasis": "number"
+        },
+        {
+          "at": 26.909,
+          "kicker": "БЛИЖЕ",
+          "headline": "ДЕСЯТАЯ СЕКУНДЫ",
+          "formula": "h = 0,1 → vср = 4,1 м/с",
+          "emphasis": "number"
+        },
+        {
+          "at": 39.618,
+          "kicker": "ЕЩЁ БЛИЖЕ",
+          "headline": "СОТАЯ СЕКУНДЫ",
+          "formula": "h = 0,01 → vср = 4,01 м/с",
+          "emphasis": "number"
+        },
+        {
+          "at": 53.464,
+          "kicker": "h ≠ 0",
+          "headline": "ОДНА ФОРМУЛА",
+          "formula": "((2 + h)² − 4) / h = 4 + h",
+          "emphasis": "equation"
+        }
+      ],
+      "caption": "ФИКСИРУЕМ МОМЕНТ"
+    },
+    {
+      "id": "the-limit",
+      "scene": "limit",
+      "start": 247.20100000000002,
+      "duration": 63.941208333333336,
+      "title": "Поймать мгновение",
+      "formula": "4,1 → 4,01 → 4",
+      "cues": [
+        {
+          "at": 0,
+          "text": "СПРАВА → 4"
+        },
+        {
+          "at": 12.788241666666666,
+          "text": "СЛЕВА → 4"
+        },
+        {
+          "at": 25.576483333333332,
+          "text": "0/0? СТОП."
+        },
+        {
+          "at": 38.364725,
+          "text": "ПРОИЗВОДНАЯ"
+        },
+        {
+          "at": 51.152966666666664,
+          "text": "4 МЕТРА В СЕКУНДУ"
+        }
+      ],
+      "beats": [
+        {
+          "at": 0,
+          "kicker": "h > 0",
+          "headline": "СПРАВА → 4",
+          "formula": "4,1 → 4,01 → 4",
+          "emphasis": "number"
+        },
+        {
+          "at": 12.045,
+          "kicker": "h < 0",
+          "headline": "СЛЕВА → 4",
+          "formula": "3,9 → 3,99 → 4",
+          "emphasis": "number"
+        },
+        {
+          "at": 23.882,
+          "kicker": "ВАЖНАЯ ДЕТАЛЬ",
+          "headline": "0/0? СТОП.",
+          "formula": "h → 0, h ≠ 0",
+          "emphasis": "hero"
+        },
+        {
+          "at": 35.7,
+          "kicker": "ОПРЕДЕЛЕНИЕ",
+          "headline": "ПРОИЗВОДНАЯ",
+          "formula": "f′(a) = lim[h→0] (f(a + h) − f(a)) / h",
+          "emphasis": "equation"
+        },
+        {
+          "at": 49.482,
+          "kicker": "ОТВЕТ",
+          "headline": "4 МЕТРА В СЕКУНДУ",
+          "formula": "s′(2) = 4 м/с",
+          "emphasis": "number"
+        }
+      ],
+      "caption": "СПРАВА → 4"
+    },
+    {
+      "id": "local-straight-line",
+      "scene": "tangent",
+      "start": 311.1422083333334,
+      "duration": 69.85320833333333,
+      "title": "Кофе и касательная",
+      "formula": "Наклон касательной = f′(a)",
+      "cues": [
+        {
+          "at": 0,
+          "text": "ПРИБЛИЗИМ"
+        },
+        {
+          "at": 13.970641666666666,
+          "text": "70 ГРАДУСОВ"
+        },
+        {
+          "at": 27.94128333333333,
+          "text": "ЧТО ДАЛЬШЕ?"
+        },
+        {
+          "at": 41.911925,
+          "text": "ПОЛМИНУТЫ СПУСТЯ"
+        },
+        {
+          "at": 55.88256666666666,
+          "text": "ТОЛЬКО РЯДОМ"
+        }
+      ],
+      "beats": [
+        {
+          "at": 0,
+          "kicker": "ПРИБЛИЖЕНИЕ",
+          "headline": "ПРИБЛИЗИМ",
+          "formula": "Наклон касательной = f′(a)",
+          "emphasis": "hero"
+        },
+        {
+          "at": 14.436,
+          "kicker": "КОФЕ СЕЙЧАС",
+          "headline": "70 ГРАДУСОВ",
+          "formula": "T₀ = 70 °C · T′(t₀) = −2 °C/мин",
+          "emphasis": "number"
+        },
+        {
+          "at": 27.227,
+          "kicker": "ЛОКАЛЬНАЯ МОДЕЛЬ",
+          "headline": "ЧТО ДАЛЬШЕ?",
+          "formula": "T(t₀ + Δt) ≈ 70 − 2Δt",
+          "emphasis": "equation"
+        },
+        {
+          "at": 40.036,
+          "kicker": "ПРОВЕРЯЕМ ЧИСЛА",
+          "headline": "ПОЛМИНУТЫ СПУСТЯ",
+          "formula": "Δt = 0,5 мин → T ≈ 69 °C",
+          "emphasis": "number"
+        },
+        {
+          "at": 53.964,
+          "kicker": "ТОЛЬКО РЯДОМ",
+          "headline": "ТОЛЬКО РЯДОМ",
+          "formula": "f(a + h) ≈ f(a) + f′(a)h",
+          "emphasis": "equation"
+        }
+      ],
+      "caption": "ПРИБЛИЗИМ"
+    },
+    {
+      "id": "rules-you-can-see",
+      "scene": "rules",
+      "start": 380.9954166666667,
+      "duration": 62.547666666666665,
+      "title": "Как растёт квадрат",
+      "formula": "S = x²",
+      "cues": [
+        {
+          "at": 0,
+          "text": "КВАДРАТ РАСТЁТ"
+        },
+        {
+          "at": 12.509533333333334,
+          "text": "ПОЛОСЫ + УГОЛОК"
+        },
+        {
+          "at": 25.019066666666667,
+          "text": "УГОЛОК УХОДИТ"
+        },
+        {
+          "at": 37.5286,
+          "text": "ДВА ПРАВИЛА"
+        },
+        {
+          "at": 50.038133333333334,
+          "text": "ПРОВЕРИМ"
+        }
+      ],
+      "beats": [
+        {
+          "at": 0,
+          "kicker": "ПЛОЩАДЬ",
+          "headline": "КВАДРАТ РАСТЁТ",
+          "formula": "S = x²",
+          "emphasis": "hero"
+        },
+        {
+          "at": 12.118,
+          "kicker": "ПРИРОСТ",
+          "headline": "ПОЛОСЫ + УГОЛОК",
+          "formula": "ΔS = xh + xh + h²",
+          "emphasis": "equation"
+        },
+        {
+          "at": 22.327,
+          "kicker": "ПРЕДЕЛ",
+          "headline": "УГОЛОК УХОДИТ",
+          "formula": "ΔS / h = 2x + h → 2x",
+          "emphasis": "equation"
+        },
+        {
+          "at": 35.164,
+          "kicker": "ДВА ПРАВИЛА",
+          "headline": "ДВА ПРАВИЛА",
+          "formula": "(c)′ = 0 · (x³)′ = 3x²",
+          "emphasis": "equation"
+        },
+        {
+          "at": 47.609,
+          "kicker": "БЫСТРЫЙ РАСЧЁТ",
+          "headline": "ПРОВЕРИМ",
+          "formula": "(3x² + 5)′ = 6x",
+          "emphasis": "equation"
+        }
+      ],
+      "caption": "КВАДРАТ РАСТЁТ"
+    },
+    {
+      "id": "connected-changes",
+      "scene": "chain",
+      "start": 443.54308333333336,
+      "duration": 64.66733333333333,
+      "title": "Две ступени",
+      "formula": "x → u = 3x + 1",
+      "cues": [
+        {
+          "at": 0,
+          "text": "ПЕРВАЯ СТУПЕНЬ"
+        },
+        {
+          "at": 12.933466666666668,
+          "text": "ВТОРАЯ СТУПЕНЬ"
+        },
+        {
+          "at": 25.866933333333336,
+          "text": "3 × 2u"
+        },
+        {
+          "at": 38.800399999999996,
+          "text": "СОБИРАЕМ ОТВЕТ"
+        },
+        {
+          "at": 51.73386666666667,
+          "text": "ДВА ВКЛАДА"
+        }
+      ],
+      "beats": [
+        {
+          "at": 0,
+          "kicker": "ПЕРВАЯ СТУПЕНЬ",
+          "headline": "ПЕРВАЯ СТУПЕНЬ",
+          "formula": "x → u = 3x + 1",
+          "emphasis": "hero"
+        },
+        {
+          "at": 12.2,
+          "kicker": "СОСТАВНАЯ ФУНКЦИЯ",
+          "headline": "ВТОРАЯ СТУПЕНЬ",
+          "formula": "u → y = u²",
+          "emphasis": "hero"
+        },
+        {
+          "at": 23.509,
+          "kicker": "ПРАВИЛО ЦЕПОЧКИ",
+          "headline": "3 × 2u",
+          "formula": "dy / dx = (2u) · 3",
+          "emphasis": "equation"
+        },
+        {
+          "at": 37.345,
+          "kicker": "РЕЗУЛЬТАТ",
+          "headline": "СОБИРАЕМ ОТВЕТ",
+          "formula": "((3x + 1)²)′ = 6(3x + 1)",
+          "emphasis": "equation"
+        },
+        {
+          "at": 49.055,
+          "kicker": "ПРОИЗВЕДЕНИЕ",
+          "headline": "ДВА ВКЛАДА",
+          "formula": "(fg)′ = f′g + fg′",
+          "emphasis": "equation"
+        }
+      ],
+      "caption": "ПЕРВАЯ СТУПЕНЬ"
+    },
+    {
+      "id": "turning-point",
+      "scene": "extrema",
+      "start": 508.2104166666667,
+      "duration": 64.45454166666667,
+      "title": "Поймать вершину",
+      "formula": "H(t) = −t² + 4t",
+      "cues": [
+        {
+          "at": 0,
+          "text": "МЯЧ ЛЕТИТ"
+        },
+        {
+          "at": 12.890908333333334,
+          "text": "СКОРОСТЬ ПАДАЕТ"
+        },
+        {
+          "at": 25.781816666666668,
+          "text": "ВЕРШИНА"
+        },
+        {
+          "at": 38.67272500000001,
+          "text": "РОСТ → ПАДЕНИЕ"
+        },
+        {
+          "at": 51.563633333333335,
+          "text": "НОЛЬ БЕЗ ВЕРШИНЫ"
+        }
+      ],
+      "beats": [
+        {
+          "at": 0,
+          "kicker": "МОДЕЛЬ БРОСКА",
+          "headline": "МЯЧ ЛЕТИТ",
+          "formula": "H(t) = −t² + 4t",
+          "emphasis": "hero"
+        },
+        {
+          "at": 12.382,
+          "kicker": "ВЕРТИКАЛЬНАЯ СКОРОСТЬ",
+          "headline": "СКОРОСТЬ ПАДАЕТ",
+          "formula": "H′(t) = 4 − 2t",
+          "emphasis": "equation"
+        },
+        {
+          "at": 25.282,
+          "kicker": "ВЕРШИНА",
+          "headline": "ВЕРШИНА",
+          "formula": "H′(2) = 0 · H(2) = 4 м",
+          "emphasis": "number"
+        },
+        {
+          "at": 36.8,
+          "kicker": "ПРОВЕРКА МАКСИМУМА",
+          "headline": "РОСТ → ПАДЕНИЕ",
+          "formula": "+ → 0 → −",
+          "emphasis": "hero"
+        },
+        {
+          "at": 49.091,
+          "kicker": "КОНТРПРИМЕР",
+          "headline": "НОЛЬ БЕЗ ВЕРШИНЫ",
+          "formula": "f(x) = x³ · f′(0) = 0",
+          "emphasis": "equation"
+        }
+      ],
+      "caption": "МЯЧ ЛЕТИТ"
+    },
+    {
+      "id": "one-idea",
+      "scene": "outro",
+      "start": 572.6649583333333,
+      "duration": 67.39925,
+      "title": "Одна идея. Три истории.",
+      "formula": "s(t) = t² → v(t) = 2t",
+      "cues": [
+        {
+          "at": 0,
+          "text": "МАШИНА"
+        },
+        {
+          "at": 13.479849999999999,
+          "text": "КОФЕ"
+        },
+        {
+          "at": 26.959699999999998,
+          "text": "МЯЧ"
+        },
+        {
+          "at": 40.43954999999999,
+          "text": "ДВА КАДРА → МГНОВЕНИЕ"
+        },
+        {
+          "at": 53.919399999999996,
+          "text": "ЗАМЕЧАЙ ИЗМЕНЕНИЯ"
+        }
+      ],
+      "beats": [
+        {
+          "at": 0,
+          "kicker": "СКОРОСТЬ",
+          "headline": "МАШИНА",
+          "formula": "s(t) = t² → v(t) = 2t",
+          "emphasis": "hero"
+        },
+        {
+          "at": 11.564,
+          "kicker": "ОХЛАЖДЕНИЕ",
+          "headline": "КОФЕ",
+          "formula": "T′ < 0",
+          "emphasis": "hero"
+        },
+        {
+          "at": 25.236,
+          "kicker": "ВЕРШИНА",
+          "headline": "МЯЧ",
+          "formula": "H′: + → 0 → −",
+          "emphasis": "hero"
+        },
+        {
+          "at": 38.545,
+          "kicker": "ВЕСЬ ПУТЬ",
+          "headline": "ДВА КАДРА → МГНОВЕНИЕ",
+          "formula": "Секущая → касательная",
+          "emphasis": "hero"
+        },
+        {
+          "at": 53.273,
+          "kicker": "ПРЯМО СЕЙЧАС",
+          "headline": "ЗАМЕЧАЙ ИЗМЕНЕНИЯ",
+          "formula": "Производная = скорость изменения",
+          "emphasis": "hero"
+        }
+      ],
+      "caption": "МАШИНА"
+    }
+  ]
+}

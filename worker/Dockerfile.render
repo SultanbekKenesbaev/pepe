@@ -1,0 +1,13 @@
+FROM node:22.20.0-bookworm-slim
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates chromium chromium-headless-shell libegl1 libegl-mesa0 ffmpeg fonts-liberation fonts-noto-core fonts-noto-cjk \
+    && rm -rf /var/lib/apt/lists/*
+WORKDIR /runtime
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev --ignore-scripts --no-audit --no-fund \
+    && npm uninstall --no-save --ignore-scripts @openai/codex @openai/codex-sdk --no-audit --no-fund
+COPY render.mjs /runtime/render.mjs
+COPY assets /runtime/assets
+ENV NODE_ENV=production WORKER_RENDER_DRIVER=llvmpipe EGL_PLATFORM=surfaceless LIBGL_ALWAYS_SOFTWARE=true GALLIUM_DRIVER=llvmpipe CHROME_BIN=/usr/bin/chromium-headless-shell CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium-headless-shell PLAYWRIGHT_EXECUTABLE_PATH=/usr/bin/chromium-headless-shell FFMPEG_BIN=/usr/bin/ffmpeg FFPROBE_BIN=/usr/bin/ffprobe XDG_CONFIG_HOME=/tmp/chromium-config XDG_CACHE_HOME=/tmp/chromium-cache
+WORKDIR /job
+USER node
+CMD ["node", "/runtime/render.mjs", "check"]

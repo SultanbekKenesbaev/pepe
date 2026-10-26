@@ -1,0 +1,91 @@
+# Apply together with compose.production.yaml after setup-authoring.sh.
+services:
+  author-broker:
+    build:
+      context: ${AI_TEACHER_RELEASE:?Set AI_TEACHER_RELEASE}/worker
+      dockerfile: Dockerfile.broker
+    image: routemotion-author-broker:${AI_TEACHER_BROKER_VERSION:-${AI_TEACHER_WORKER_VERSION:-${AI_TEACHER_VERSION:-latest}}}
+    container_name: routemotion-author-broker
+    user: "1000:1000"
+    group_add:
+      - "${AI_TEACHER_DOCKER_GID:-0}"
+    init: true
+    environment:
+      HOST: 0.0.0.0
+      PORT: "8080"
+      WORKER_JOBS: /jobs
+      WORKER_HOST_JOBS: ${AI_TEACHER_AUTHOR_JOBS:-/opt/ai-teacher/author-jobs}
+      WORKER_HOST_CODEX_AUTH: ${AI_TEACHER_CODEX_AUTH:-/opt/ai-teacher/codex-auth}
+      WORKER_TOKEN_FILE: /run/secrets/author-worker.token
+      WORKER_AUTHOR_IMAGE: routemotion-lesson-author:${AI_TEACHER_AUTHOR_VERSION:-${AI_TEACHER_WORKER_VERSION:-${AI_TEACHER_VERSION:-latest}}}
+      WORKER_RENDER_IMAGE: routemotion-lesson-render:${AI_TEACHER_WORKER_VERSION:-${AI_TEACHER_VERSION:-latest}}
+      WORKER_SECCOMP_PROFILE: /run/security/worker-seccomp.json
+      WORKER_APPARMOR_PROFILE: routemotion-lesson-author
+      WORKER_RENDER_CPUS: "${WORKER_RENDER_CPUS:-6}"
+      CODEX_MODEL: gpt-6-astra
+      CODEX_REASONING_EFFORT: ultra
+    volumes:
+      - type: bind
+        source: /opt/ai-teacher/worker-seccomp.json
+        target: /run/security/worker-seccomp.json
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ${AI_TEACHER_AUTHOR_JOBS:-/opt/ai-teacher/author-jobs}
+        target: /jobs
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ${AI_TEACHER_WORKER_TOKEN:-/opt/ai-teacher/secrets/author-worker.token}
+        target: /run/secrets/author-worker.token
+        read_only: true
+        bind:
+          create_host_path: false
+    networks:
+      - author_control
+    read_only: true
+    tmpfs:
+      - /tmp:rw,nosuid,nodev,size=128m,mode=1777
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 512m
+    cpus: 0.5
+    pids_limit: 128
+    restart: unless-stopped
+    stop_grace_period: 90s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Build targets only. The trusted broker starts isolated containers per job.
+  author-image:
+    profiles: [build-images]
+    build:
+      context: ${AI_TEACHER_RELEASE:?Set AI_TEACHER_RELEASE}/worker
+      dockerfile: Dockerfile.author
+    image: routemotion-lesson-author:${AI_TEACHER_AUTHOR_VERSION:-${AI_TEACHER_WORKER_VERSION:-${AI_TEACHER_VERSION:-latest}}}
+    network_mode: none
+    command: [node, --version]
+    restart: "no"
+
+  render-image:
+    profiles: [build-images]
+    build:
+      context: ${AI_TEACHER_RELEASE:?Set AI_TEACHER_RELEASE}/worker
+      dockerfile: Dockerfile.render
+    image: routemotion-lesson-render:${AI_TEACHER_WORKER_VERSION:-${AI_TEACHER_VERSION:-latest}}
+    network_mode: none
+    command: [node, --version]
+    restart: "no"
+
+networks:
+  author_control:
+    internal: true

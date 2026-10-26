@@ -1,0 +1,36 @@
+import { test, expect } from '@playwright/test';
+test('production cinematic bundle decodes protected local voice with WebGL and no external calls',async({page})=>{
+ const violations:string[]=[],external:string[]=[];
+ page.on('console',message=>{if(/Content Security Policy|Refused to/i.test(message.text()))violations.push(message.text());});
+ page.on('request',request=>{if(/^https?:/.test(request.url())&&!request.url().startsWith('http://127.0.0.1:3102'))external.push(request.url());});
+ await page.goto('/login');
+ await page.getByLabel('Почта',{exact:true}).fill('demo@aiteacher.local');
+ await page.getByLabel('Пароль',{exact:true}).fill('PepeOnly-teacher-2026!');
+ await page.getByRole('button',{name:'Войти',exact:true}).click();
+ await expect(page).toHaveURL(/\/teach$/);
+ await page.goto('/teach?preview=derivative');
+ await expect(page.locator('.derivative-scene')).toHaveAttribute('data-renderer','webgl');
+ await expect(page.locator('.derivative-scene canvas')).toHaveAttribute('data-car-asset','gltf',{timeout:30_000});
+ const play=page.getByRole('button',{name:'Продолжить урок',exact:true});
+ if(await play.isVisible())await play.click();
+ await expect.poll(()=>page.locator('audio').first().evaluate((element:HTMLAudioElement)=>element.currentTime)).toBeGreaterThan(.5);
+ const duration=Number(await page.getByRole('slider',{name:'Позиция урока'}).getAttribute('max'));
+ expect(duration).toBeGreaterThan(480);expect(duration).toBeLessThan(780);
+ expect(violations).toEqual([]);expect(external).toEqual([]);
+});
+test('production bundle and CSP allow local face processing and reject blank enrollment',async({page})=>{
+ const violations:string[]=[];
+ page.on('console',message=>{if(/Content Security Policy|Refused to/i.test(message.text()))violations.push(message.text());});
+ await page.goto('/admin/login');
+ await page.getByLabel('Почта',{exact:true}).fill('admin@aiteacher.local');
+ await page.getByLabel('Пароль',{exact:true}).fill('PepeOnly-admin-2026!');
+ await page.getByRole('button',{name:'Войти',exact:true}).click();
+ await expect(page).toHaveURL(/\/admin$/);
+ await page.getByRole('link',{name:'Студенты',exact:true}).first().click();
+ await page.getByRole('button',{name:'Добавить фото',exact:true}).first().click();
+ const data=await page.evaluate(()=>{const canvas=document.createElement('canvas');canvas.width=320;canvas.height=320;const c=canvas.getContext('2d')!;c.fillStyle='#ddd';c.fillRect(0,0,320,320);return canvas.toDataURL('image/png').split(',')[1];});
+ await page.getByRole('dialog').locator('input[type=file]').setInputFiles({name:'blank.png',mimeType:'image/png',buffer:Buffer.from(data,'base64')});
+ await page.getByRole('dialog').getByRole('button',{name:'Добавить фото',exact:true}).click();
+ await expect(page.getByRole('alert')).toContainText('Лицо не найдено',{timeout:60_000});
+ expect(violations).toEqual([]);
+});

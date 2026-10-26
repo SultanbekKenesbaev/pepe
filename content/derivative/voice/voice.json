@@ -1,0 +1,148 @@
+{
+  "model": "gemini-2.5-pro-preview-tts",
+  "voice": "Puck",
+  "chapters": [
+    {
+      "id": "the-moment",
+      "file": "the-moment.wav",
+      "duration": 55.58345833333333,
+      "sourceHash": "d286567765ee5752ddf2607bf368902634542beac24c7032086f42eb057672a6",
+      "start": 0,
+      "beatTimes": [
+        0.0,
+        12.6,
+        23.236,
+        32.636,
+        44.4
+      ]
+    },
+    {
+      "id": "moving-light",
+      "file": "moving-light.wav",
+      "duration": 54.89908333333333,
+      "sourceHash": "cddb0ef2500d9a7c29e0a6bd0ab26582f20971b0e1461e631561bdd9a230b802",
+      "start": 58.08345833333333,
+      "beatTimes": [
+        0.0,
+        10.318,
+        20.618,
+        32.145,
+        43.382
+      ]
+    },
+    {
+      "id": "two-moments",
+      "file": "two-moments.wav",
+      "duration": 59.618208333333335,
+      "sourceHash": "8a78622dd7af62319ce959d38dd7bd3d5cd98891809c728685247b313aa20120",
+      "start": 115.48254166666666,
+      "beatTimes": [
+        0.0,
+        10.591,
+        23.136,
+        33.364,
+        47.5
+      ]
+    },
+    {
+      "id": "closer",
+      "file": "closer.wav",
+      "duration": 67.10025,
+      "sourceHash": "c4640e66a84197e9af81718d29d03d69dc4a66589fd37fd697fe7d38de3abe7e",
+      "start": 177.60075,
+      "beatTimes": [
+        0.0,
+        12.655,
+        26.909,
+        39.618,
+        53.464
+      ]
+    },
+    {
+      "id": "the-limit",
+      "file": "the-limit.wav",
+      "duration": 61.441208333333336,
+      "sourceHash": "7ed7654d53d84d82860e00c776770763cfc294c18d5324772576dbe00d9c11c4",
+      "start": 247.20100000000002,
+      "beatTimes": [
+        0.0,
+        12.045,
+        23.882,
+        35.7,
+        49.482
+      ]
+    },
+    {
+      "id": "local-straight-line",
+      "file": "local-straight-line.wav",
+      "duration": 67.35320833333333,
+      "sourceHash": "0cfc37d2091a9b762233989365850a268f9ea626d6ed95895cf71e01b70b381f",
+      "start": 311.1422083333334,
+      "beatTimes": [
+        0.0,
+        14.436,
+        27.227,
+        40.036,
+        53.964
+      ]
+    },
+    {
+      "id": "rules-you-can-see",
+      "file": "rules-you-can-see.wav",
+      "duration": 60.047666666666665,
+      "sourceHash": "d37eca1f72c38ebdbdc10279cc83c1818ac1755000170cd24660acac6e2243a8",
+      "start": 380.9954166666667,
+      "beatTimes": [
+        0.0,
+        12.118,
+        22.327,
+        35.164,
+        47.609
+      ]
+    },
+    {
+      "id": "connected-changes",
+      "file": "connected-changes.wav",
+      "duration": 62.16733333333333,
+      "sourceHash": "3d84d35731e295f5e846041e88b9557454c7af5c8898b207bf4063829df2877a",
+      "start": 443.54308333333336,
+      "beatTimes": [
+        0.0,
+        12.2,
+        23.509,
+        37.345,
+        49.055
+      ]
+    },
+    {
+      "id": "turning-point",
+      "file": "turning-point.wav",
+      "duration": 61.954541666666664,
+      "sourceHash": "b555546e9d91da7f04de400334d79935cd1d2e476eb5172e760bad20244c17c7",
+      "start": 508.2104166666667,
+      "beatTimes": [
+        0.0,
+        12.382,
+        25.282,
+        36.8,
+        49.091
+      ]
+    },
+    {
+      "id": "one-idea",
+      "file": "one-idea.wav",
+      "duration": 64.89925,
+      "sourceHash": "cd7a03c8807b6571de2640d302d50f66d835d659ba66a75acc36aed78aedd463",
+      "start": 572.6649583333333,
+      "beatTimes": [
+        0.0,
+        11.564,
+        25.236,
+        38.545,
+        53.273
+      ]
+    }
+  ],
+  "updatedAt": "2026-10-20T18:30:46.112Z",
+  "tempo": 1.1
+}

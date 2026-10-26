@@ -1,0 +1,4 @@
+.derivative-scene { position:absolute; inset:0; overflow:hidden; background:#050605; }
+.derivative-scene canvas { display:block; width:100%; height:100%; outline:0; }
+.derivative-scene canvas.derivative-scene-unavailable { visibility:hidden; }
+.derivative-scene-fallback { position:absolute; inset:0; width:100%; height:100%; max-height:100%; background:radial-gradient(ellipse at 57% 50%,#171d0b 0%,#050605 65%); }

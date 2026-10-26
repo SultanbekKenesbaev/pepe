@@ -1,0 +1,8 @@
+.teach-upload-progress{margin-top:20px;padding:16px 18px;border:1px solid #dce7ed;border-radius:18px;background:#f4f8fb;color:#263b47}
+.teach-upload-progress>div:first-child{display:flex;align-items:center;gap:10px;font-size:12px}
+.teach-upload-progress strong{font-weight:500;flex:1}.teach-upload-progress span{font-variant-numeric:tabular-nums}
+.teach-upload-meter{height:5px;overflow:hidden;border-radius:999px;background:#dfe8ed;margin-top:13px}
+.teach-upload-meter>i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#7dafee,#b7dc4b);transition:width .25s ease}
+.teach-upload-meter.is-indeterminate>i{width:30%;animation:teach-upload-moving 1.4s ease-in-out infinite}
+@keyframes teach-upload-moving{0%{transform:translateX(-110%)}100%{transform:translateX(350%)}}
+@media(prefers-reduced-motion:reduce){.teach-upload-meter>i{transition:none}.teach-upload-meter.is-indeterminate>i{animation:none;width:100%;opacity:.55}}

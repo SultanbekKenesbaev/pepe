@@ -1,0 +1,20 @@
+FROM node:22.20.0-bookworm-slim
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates chromium chromium-headless-shell ffmpeg python3 git cmake make g++ fonts-liberation fonts-noto-core fonts-noto-cjk \
+    && rm -rf /var/lib/apt/lists/*
+WORKDIR /runtime
+COPY package2d.json ./package.json
+COPY package2d-lock.json ./package-lock.json
+RUN npm ci --omit=dev --ignore-scripts --no-audit --no-fund
+COPY render2d.mjs render.mjs align2d.py /runtime/
+COPY assets2d /runtime/assets2d
+ENV NODE_ENV=production HOME=/home/node DO_NOT_TRACK=1 HYPERFRAMES_BROWSER_PATH=/usr/bin/chromium-headless-shell PRODUCER_HEADLESS_SHELL_PATH=/usr/bin/chromium-headless-shell CHROME_BIN=/usr/bin/chromium-headless-shell FFMPEG_BIN=/usr/bin/ffmpeg FFPROBE_BIN=/usr/bin/ffprobe XDG_CONFIG_HOME=/tmp/hyperframes-config XDG_CACHE_HOME=/tmp/hyperframes-cache
+USER node
+# Build the native Whisper runtime and cache the pinned multilingual small model
+# while build networking is available. Jobs run without network or installers.
+RUN mkdir -p /tmp/voice-prewarm \
+    && ffmpeg -hide_banner -loglevel error -f lavfi -i anullsrc=r=16000:cl=mono -t 1 /tmp/voice-prewarm/silence.wav \
+    && node /runtime/node_modules/hyperframes/bin/hyperframes.mjs transcribe /tmp/voice-prewarm/silence.wav --dir /tmp/voice-prewarm --engine whisper --model small --language ru --json \
+    && test -s /home/node/.cache/hyperframes/whisper/models/ggml-small.bin \
+    && rm -rf /tmp/voice-prewarm
+WORKDIR /job
+CMD ["node", "/runtime/render2d.mjs", "check"]

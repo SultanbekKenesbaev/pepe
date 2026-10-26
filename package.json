@@ -1,0 +1,59 @@
+{
+  "name": "ai-teacher",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "AI Teacher — university classes and attendance",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "tsx server/start.ts",
+    "build": "tsc --noEmit && vite build",
+    "start": "NODE_ENV=production tsx server/start.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "test:e2e": "playwright test",
+    "backup": "tsx scripts/backup.ts",
+    "test:production": "npm run build && playwright test --config playwright.production.config.ts",
+    "cinema:voice": "tsx scripts/generate-cinema-voice.ts",
+    "cinema:composition": "tsx scripts/build-cinema-composition.ts"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.3.14",
+    "@vladmandic/human": "^3.3.6",
+    "cookie-parser": "^1.4.7",
+    "csv-parse": "^7.0.3",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.1.0",
+    "fflate": "^0.8.3",
+    "gsap": "^3.15.0",
+    "helmet": "^8.1.0",
+    "lucide-react": "^0.468.0",
+    "multer": "^2.0.2",
+    "otpauth": "^9.4.1",
+    "pdf-parse": "^2.4.5",
+    "pg": "^8.16.3",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.9.4",
+    "three": "^0.186.1",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.0",
+    "@types/cookie-parser": "^1.4.9",
+    "@types/express": "^5.0.3",
+    "@types/multer": "^2.0.0",
+    "@types/node": "^22.18.10",
+    "@types/pg": "^8.15.5",
+    "@types/react": "^19.1.16",
+    "@types/react-dom": "^19.1.9",
+    "@types/three": "^0.186.0",
+    "@vitejs/plugin-react": "^5.0.4",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.10"
+  }
+}

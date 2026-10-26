@@ -1,0 +1,18 @@
+[Unit]
+Description=Verified AI Teacher database and media backup
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/opt/ai-teacher/backup-server.sh
+ExecStopPost=/opt/ai-teacher/recover-backup.sh
+TimeoutStartSec=20min
+TimeoutStopSec=150s
+KillMode=control-group
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+UMask=0077
+StandardOutput=journal
+StandardError=journal

@@ -1,0 +1,13 @@
+FROM node:22.20.0-bookworm-slim
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates git ripgrep python3 bubblewrap \
+    && rm -rf /var/lib/apt/lists/*
+WORKDIR /runtime
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev --ignore-scripts --no-audit --no-fund
+COPY author.mjs /runtime/author.mjs
+COPY assets /runtime/assets
+COPY reference /runtime/reference
+ENV PATH=/runtime/node_modules/.bin:$PATH CODEX_HOME=/codex NODE_ENV=production
+WORKDIR /job
+USER node
+CMD ["node", "/runtime/author.mjs", "script"]

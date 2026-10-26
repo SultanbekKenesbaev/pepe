@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily verified AI Teacher backup at 03:15 Tashkent
+
+[Timer]
+OnCalendar=*-*-* 03:15:00 Asia/Tashkent
+RandomizedDelaySec=120
+Persistent=true
+Unit=ai-teacher-backup.service
+
+[Install]
+WantedBy=timers.target

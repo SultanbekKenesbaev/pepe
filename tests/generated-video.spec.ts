@@ -1,0 +1,44 @@
+import { readFileSync } from 'node:fs';
+import { test, expect } from '@playwright/test';
+
+test('generated MP4 uses native playback, chapter seek, fullscreen and saved position without legacy audio or attendance',async({page})=>{
+  const id='e'.repeat(32),errors:string[]=[],attendance:string[]=[];
+  const movie=readFileSync(new URL('./fixtures/generated-player.mp4',import.meta.url));
+  const chapters=[0,4].map((start,index)=>({id:`scene-${index}`,title:index===0?'Начало':'Вторая часть',scene:'custom',narration:'Синтетический тест плеера.',headline:'',labels:[],values:[],palette:'dark',start,duration:4}));
+  await page.route('**/api/**',route=>{
+    const request=route.request(),url=new URL(request.url()),path=url.pathname;
+    if(request.method()==='POST'&&path.includes('/teaching-sessions'))attendance.push(path);
+    if(path==='/api/auth/me')return route.fulfill({json:{user:{id:'video-teacher',name:'Преподаватель',email:'video@example.test',role:'TEACHER',institutionId:'video-test',active:true},institutions:[{id:'video-test',name:'Университет',type:'UNIVERSITY',language:'ru',settings:{timezone:'Asia/Tashkent'}}],csrfToken:'video-csrf',ai:{configured:true,mode:'provider'}}});
+    if(path===`/api/generated-lessons/${id}/manifest`)return route.fulfill({json:{id,title:'Готовое видео',summary:'',duration:8,chapters,voice:{status:'ready'},engine:'codex',artifact:{videoUrl:`/api/generated-lessons/${id}/video`},videoUrl:`/api/generated-lessons/${id}/video`}});
+    if(path===`/api/generated-lessons/${id}/video`)return route.fulfill({body:movie,contentType:'video/mp4',headers:{'Accept-Ranges':'bytes'}});
+    if(path==='/api/university')return route.fulfill({json:{date:url.searchParams.get('date'),semesters:[],events:[],sessions:[],groups:[],students:[],subjects:[],rooms:[],teachers:[]}});
+    if(['/api/lesson-catalog','/api/lesson-materials','/api/generated-lessons','/api/lesson-publications'].includes(path))return route.fulfill({json:[]});
+    return route.fulfill({status:404,json:{error:'Не найдено'}});
+  });
+  page.on('pageerror',error=>errors.push(error.message));
+  await page.goto(`/teach?film=${id}`);
+  const film=page.getByRole('dialog',{name:'Готовое видео'}),video=film.locator('video');
+  await expect(film).toBeVisible();await expect(video).toHaveAttribute('controls','');
+  await expect(film.locator('canvas,audio')).toHaveCount(0);
+  await expect.poll(()=>video.evaluate(element=>(element as HTMLVideoElement).readyState)).toBeGreaterThanOrEqual(2);
+  if(await video.evaluate(element=>(element as HTMLVideoElement).paused))await film.locator('.generated-video-start button').click();
+  await expect.poll(()=>video.evaluate(element=>(element as HTMLVideoElement).currentTime)).toBeGreaterThan(1.2);
+  await film.focus();await page.keyboard.press('Space');
+  await expect.poll(()=>video.evaluate(element=>(element as HTMLVideoElement).paused)).toBe(true);
+  const paused=await video.evaluate(element=>(element as HTMLVideoElement).currentTime);await page.waitForTimeout(250);
+  expect(Math.abs(await video.evaluate(element=>(element as HTMLVideoElement).currentTime)-paused)).toBeLessThan(.08);
+  await film.getByLabel('Глава урока').selectOption('1');
+  await expect.poll(()=>video.evaluate(element=>(element as HTMLVideoElement).currentTime)).toBeGreaterThanOrEqual(4);
+  await film.getByRole('button',{name:'Полный экран',exact:true}).click();
+  await expect.poll(()=>page.evaluate(()=>document.fullscreenElement?.classList.contains('generated-video')||false)).toBe(true);
+  await page.keyboard.press('Escape');await expect.poll(()=>page.evaluate(()=>!document.fullscreenElement)).toBe(true);await expect(film).toBeVisible();
+  await page.setViewportSize({width:390,height:844});expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+  await film.getByRole('button',{name:'Закрыть урок',exact:true}).click();await expect(film).toHaveCount(0);
+  expect(Number(await page.evaluate(key=>localStorage.getItem(key),`aiteacher:generated:${id}:8`))).toBeGreaterThanOrEqual(4);
+  await page.goto(`/teach?film=${id}`);await expect(film).toBeVisible();
+  await expect.poll(()=>video.evaluate(element=>(element as HTMLVideoElement).readyState)).toBeGreaterThanOrEqual(2);
+  await video.evaluate(element=>(element as HTMLVideoElement).pause());
+  expect(await video.evaluate(element=>(element as HTMLVideoElement).currentTime)).toBeGreaterThanOrEqual(3.9);
+  await film.getByRole('button',{name:'Закрыть урок',exact:true}).click();await expect(film).toHaveCount(0);
+  expect(attendance).toEqual([]);expect(errors).toEqual([]);await expect.poll(()=>page.evaluate(()=>document.body.style.overflow)).not.toBe('hidden');
+});

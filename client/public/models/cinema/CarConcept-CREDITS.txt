@@ -1,0 +1,8 @@
+Car Concept
+Copyright 2024 Darmstadt Graphics Group GmbH
+Model and textures: Eric Chadwick
+License: Creative Commons Attribution 4.0 International
+https://creativecommons.org/licenses/by/4.0/
+Source: https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/CarConcept
+Source GLB SHA-256: c272098089d78c5cd9fd9f24ff50ee8acf8d932c55f2d55fc10adb6c8998966b
+Adapted for AI Teacher: orientation, scale, lime paint and simplified optical materials. Original branding is not an endorsement.

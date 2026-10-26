@@ -1,0 +1,85 @@
+name: routemotion-ai-teacher
+
+services:
+  ai-teacher:
+    build:
+      context: ${AI_TEACHER_RELEASE:?Set AI_TEACHER_RELEASE to the release directory}
+    image: routemotion-ai-teacher:${AI_TEACHER_VERSION:-latest}
+    container_name: routemotion-ai-teacher
+    init: true
+    command: ["flock", "--exclusive", "--nonblock", "--no-fork", "/data/process.lock", "/bin/sh", "/usr/local/bin/ai-teacher-start"]
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: "3000"
+      DATA_DIR: /data
+      SEED_DEMO: "false"
+      TRUST_PROXY: "1"
+      GEMINI_API_KEY_FILE: /run/secrets/google-ai.key
+      GEMINI_SCRIPT_MODEL: gemini-3.8-flash
+      GEMINI_TTS_MODEL: ${AI_TEACHER_TTS_MODEL:-gemini-3.8-flash-tts}
+      GEMINI_TTS_VOICE: Puck
+      TTS_BACKEND: ${TTS_BACKEND:-google}
+      OPENROUTER_API_KEY_FILE: /run/secrets/openrouter.key
+      OPENROUTER_TTS_MODEL: ${OPENROUTER_TTS_MODEL:-google/gemini-3.8-flash-tts}
+      OPENROUTER_TTS_VOICE: ${OPENROUTER_TTS_VOICE:-Puck}
+      OPERATIONS_STATUS_FILE: /run/operations/backup-status.json
+      CODEX_WORKER_URL: http://author-broker:8080
+      CODEX_WORKER_TOKEN_FILE: /run/secrets/author-worker.token
+      CODEX_2D_WORKER_URL: http://author-broker-2d:8080
+      CODEX_2D_WORKER_TOKEN_FILE: /run/secrets/author-2d-worker.token
+    volumes:
+      - ${AI_TEACHER_DATA:-/opt/ai-teacher/data}:/data
+      - ${AI_TEACHER_START_SCRIPT:-/opt/ai-teacher/start-container.sh}:/usr/local/bin/ai-teacher-start:ro
+      - ${AI_TEACHER_GOOGLE_KEY:-/opt/ai-teacher/secrets/google-ai.key}:/run/secrets/google-ai.key:ro
+      # Google-only installs use an empty file; OpenRouter requires an explicit private key path.
+      - type: bind
+        source: ${AI_TEACHER_OPENROUTER_KEY:-/dev/null}
+        target: /run/secrets/openrouter.key
+        read_only: true
+        bind:
+          create_host_path: false
+      - /opt/ai-teacher/operations:/run/operations:ro
+      - type: bind
+        source: ${AI_TEACHER_WORKER_TOKEN:-/opt/ai-teacher/secrets/author-worker.token}
+        target: /run/secrets/author-worker.token
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ${AI_TEACHER_2D_WORKER_TOKEN:-/opt/ai-teacher/secrets/author-2d-worker.token}
+        target: /run/secrets/author-2d-worker.token
+        read_only: true
+        bind:
+          create_host_path: false
+    networks:
+      edge:
+        aliases: [routemotion-ai-teacher]
+      author_control: {}
+    restart: unless-stopped
+    stop_grace_period: 20s
+    read_only: true
+    tmpfs:
+      - /tmp:rw,nosuid,nodev,size=128m,mode=1777
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 2g
+    pids_limit: 256
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      start_period: 30s
+      retries: 3
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  author_control:
+    internal: true
+  edge:
+    external: true
+    name: ${AI_TEACHER_PROXY_NETWORK:-app_default}

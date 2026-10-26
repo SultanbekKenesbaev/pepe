@@ -1,0 +1,23 @@
+.teach-video-modes{border:0;padding:0;margin:0 0 23px;min-width:0}
+.teach-video-modes>legend{font-size:12px;color:#6c7470;padding:0;margin-bottom:10px}
+.teach-video-mode-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.teach-video-mode{position:relative;min-width:0;cursor:pointer}
+.teach-video-mode>input{position:absolute;inset:0;z-index:1;width:100%;height:100%;opacity:0;margin:0;cursor:pointer}
+.teach-video-mode-card{position:relative;display:flex;align-items:center;gap:16px;min-height:94px;padding:17px 19px;border:1px solid #dce5ee;border-radius:21px;background:#f7f9fc;box-shadow:0 3px 8px #24435d03;transition:border-color .18s,background .18s,box-shadow .18s}
+.teach-video-mode-name{color:#465d70;font-size:15px;font-weight:600;letter-spacing:-.3px;white-space:nowrap}
+.teach-video-mode-art{position:relative;display:grid;place-items:center;flex-shrink:0;width:48px;height:52px;color:#6d88a0;isolation:isolate}
+.teach-video-mode-art>i{position:absolute;inset:4px 0;border:1px solid #dde6ee;border-radius:14px;background:#fff;box-shadow:3px 5px 0 #d5e1ed80;z-index:-1;transform:rotate(-7deg)}
+.mode-3d .teach-video-mode-art>i{transform:rotate(8deg);background:#edf2f8;box-shadow:3px 5px 0 #cddbe780}
+.teach-video-mode-check{position:absolute;right:13px;top:12px;display:grid;place-items:center;width:19px;height:19px;border:1px solid #cbd8e3;border-radius:50%;background:#fff;color:#fff}
+.teach-video-mode>input:checked+.teach-video-mode-card{border-color:#759ec3;background:#edf5ff;box-shadow:0 0 0 1px #759ec324,0 6px 16px #355c8310}
+.teach-video-mode>input:checked+.teach-video-mode-card .teach-video-mode-name{color:#244e76}
+.teach-video-mode>input:checked+.teach-video-mode-card .teach-video-mode-art{color:#396e9f}
+.teach-video-mode>input:checked+.teach-video-mode-card .teach-video-mode-check{background:#3d729f;border-color:#3d729f}
+.teach-video-mode>input:focus-visible+.teach-video-mode-card{outline:3px solid #4e85b6;outline-offset:4px}
+.teach-video-mode>input:disabled{cursor:default}
+.teach-video-mode>input:disabled+.teach-video-mode-card{opacity:.6;cursor:default}
+.teach-video-modes:not(:disabled) .teach-video-mode:hover .teach-video-mode-card{border-color:#8aacc9;box-shadow:0 5px 17px #355c8310}
+.teach-history-mode{font-size:9px;font-weight:650;line-height:1;padding:4px 5px;border:1px solid #d9e5ef;border-radius:5px;background:#f0f5fa;color:#57748e}
+.teach-create-dialog .teach-form-field>input:focus,.teach-create-dialog .teach-form-field>select:focus{outline:2px solid #80a8ce;outline-offset:2px;border-color:#8eafd0}
+@media(max-width:590px){.teach-video-mode-options{gap:10px}.teach-video-mode-card{min-height:84px;border-radius:18px;gap:12px;padding:15px 12px}.teach-video-mode-name{font-size:13px}.teach-video-mode-art{width:38px;height:44px}.teach-video-mode-art>svg{width:28px}.teach-video-mode-check{width:16px;height:16px;right:10px;top:9px}.teach-video-mode-check>svg{width:10px}.teach-video-modes>legend{font-size:11px}.teach-history-mode{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.teach-video-mode-card{transition:none}}
