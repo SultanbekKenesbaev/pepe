@@ -76,7 +76,7 @@ function containerArgs(id,kind,mode){
  if(kind==='render')args.push('--network','none');
  else{
   args.push('--security-opt',`seccomp=${authorSeccomp}`,'--security-opt',`apparmor=${authorAppArmor}`);
-  args.push('--mount',`type=bind,src=${hostAuth},dst=/codex`,'--env','CODEX_HOME=/codex','--env',`CODEX_MODEL=${process.env.CODEX_MODEL||'gpt-6-astra'}`,'--env',`CODEX_REASONING_EFFORT=${process.env.CODEX_REASONING_EFFORT||'ultra'}`);
+  args.push('--mount',`type=bind,src=${hostAuth},dst=/codex`,'--env','CODEX_HOME=/codex','--env',`CODEX_MODEL=${process.env.CODEX_MODEL||'gpt-6.1-sol'}`,'--env',`CODEX_REASONING_EFFORT=${process.env.CODEX_REASONING_EFFORT||'ultra'}`);
   if(illustrated)args.push('--mount',`type=bind,src=${path.join(hostJobs,id,'generated-images')},dst=/codex/generated_images`);
   if(illustrated&&['visuals','review'].includes(mode))for(const relative of ['audio','.trusted-asr','input.json','output/voice-alignment.json','output/assets/voice-full.wav'])args.push('--mount',`type=bind,src=${path.join(hostJobs,id,relative)},dst=/job/${relative},readonly`);
   if(hostKey)args.push('--mount',`type=bind,src=${hostKey},dst=/run/secrets/openai-api.key,readonly`,'--env','CODEX_API_KEY_FILE=/run/secrets/openai-api.key');

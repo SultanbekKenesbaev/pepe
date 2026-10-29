@@ -23,7 +23,7 @@ services:
       WORKER_SECCOMP_PROFILE: /run/security/worker-seccomp.json
       WORKER_APPARMOR_PROFILE: routemotion-lesson-author
       WORKER_RENDER_CPUS: "${WORKER_2D_RENDER_CPUS:-4}"
-      CODEX_MODEL: gpt-6-astra
+      CODEX_MODEL: gpt-6.1-sol
       CODEX_REASONING_EFFORT: ultra
     volumes:
       - type: bind

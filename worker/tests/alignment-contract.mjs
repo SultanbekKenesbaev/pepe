@@ -107,7 +107,7 @@ test('the author receives full-cue caption rules only for the measured Karakalpa
   async function run(language,report){
     await fs.writeFile(path.join(f.job,'input.json'),JSON.stringify({...f.manifest,language}));await f.save(report);
     const result=await new Promise((resolve,reject)=>{
-      const child=spawn(process.execPath,['--import',hook,author,'review'],{env:{...process.env,CODEX_JOB_DIR:f.job,CODEX_BIN:cli,CODEX_MODEL:'gpt-6-astra',CODEX_REASONING_EFFORT:'ultra',TEST_PROMPT_PATH:promptFile},stdio:['ignore','pipe','pipe']});let error='';child.stderr.on('data',bytes=>error+=bytes);child.on('error',reject);child.on('close',code=>resolve({code,error}));
+      const child=spawn(process.execPath,['--import',hook,author,'review'],{env:{...process.env,CODEX_JOB_DIR:f.job,CODEX_BIN:cli,CODEX_MODEL:'gpt-6.1-sol',CODEX_REASONING_EFFORT:'ultra',TEST_PROMPT_PATH:promptFile},stdio:['ignore','pipe','pipe']});let error='';child.stderr.on('data',bytes=>error+=bytes);child.on('error',reject);child.on('close',code=>resolve({code,error}));
     });
     assert.equal(result.code,0,result.error);return fs.readFile(promptFile,'utf8');
   }

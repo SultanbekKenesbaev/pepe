@@ -41,7 +41,7 @@ test('review rejects missing native assets even when Codex exits successfully', 
   const hook = path.join(directory, 'isolated-images.mjs');
   await fs.writeFile(hook, `import{promises as fs}from'node:fs';const base=${JSON.stringify(native)};const map=file=>typeof file==='string'&&(file==='/codex/generated_images'||file.startsWith('/codex/generated_images/'))?base+file.slice('/codex/generated_images'.length):file;for(const name of ['readdir','lstat','stat','readFile']){const original=fs[name];fs[name]=function(file,...args){return original.call(this,map(file),...args);};}`);
   const runReview = () => execute(process.execPath, ['--import', hook, author, 'review'], {
-    ...process.env, CODEX_JOB_DIR: job, CODEX_BIN: cli, CODEX_MODEL: 'gpt-6-astra', CODEX_REASONING_EFFORT: 'ultra',
+    ...process.env, CODEX_JOB_DIR: job, CODEX_BIN: cli, CODEX_MODEL: 'gpt-6.1-sol', CODEX_REASONING_EFFORT: 'ultra',
   });
   let result = await runReview();
   assert.notEqual(result.code, 0);

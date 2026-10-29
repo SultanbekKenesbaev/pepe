@@ -5,9 +5,9 @@ import { spawn } from 'node:child_process';
 const job = path.resolve(process.env.CODEX_JOB_DIR || '/job');
 const cli = process.env.CODEX_BIN || '/runtime/node_modules/.bin/codex';
 const mode = process.argv[2] || 'auth';
-const model = process.env.CODEX_MODEL || 'gpt-6-astra';
+const model = process.env.CODEX_MODEL || 'gpt-6.1-sol';
 const effort = process.env.CODEX_REASONING_EFFORT || 'ultra';
-if(model !== 'gpt-6-astra' || effort !== 'ultra') throw new Error('The author model must be gpt-6-astra / ultra');
+if(model !== 'gpt-6.1-sol' || effort !== 'ultra') throw new Error('The author model must be gpt-6.1-sol / ultra');
 const env = {...process.env};
 if(env.CODEX_API_KEY_FILE) { const file = await fs.lstat(env.CODEX_API_KEY_FILE); if(!file.isFile()||file.isSymbolicLink()||file.size>4096)throw new Error('Invalid API key file'); env.CODEX_API_KEY=(await fs.readFile(env.CODEX_API_KEY_FILE,'utf8')).trim(); }
 
